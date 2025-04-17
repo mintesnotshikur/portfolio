@@ -24,11 +24,7 @@ const ProjectOverview = ({ project, onClose }) => {
           </button>
         </div>
         <div className="flex flex-col justify-center items-center gap-2 decoration-0 overflow-hidden">
-          {/* <div className="flex gap-4"> */}
           <MoreImages images={image} title={title} />
-          {/* </div> */}
-          {/* )} */}
-          {/* <div className="w-full flex justify-between items-center"> */}
           {link && (
             <a
               href={link}
@@ -39,11 +35,9 @@ const ProjectOverview = ({ project, onClose }) => {
             </a>
           )}
         </div>
-        {/* </div> */}
         <p className="text-[1rem] font-normal w-full lg:max-h-[180px] h-[250px] overflow-auto">
           {description}
         </p>
-        {/* </div> */}
       </div>
     </div>
   );

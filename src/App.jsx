@@ -75,12 +75,23 @@ function App() {
           </p>
           <p className="w-full text-justify lg:w-[70%]">
             I have a Computer Science degree and skills in{" "}
-            <span className="text-secondary font-secondary">React</span>,{" "}
-            <span className="text-secondary font-secondary">React Native</span>,{" "}
-            <span className="text-secondary font-secondary">PHP</span> and{" "}
-            <span className="text-secondary font-secondary">MySQL</span>. I am
-            eager to contribute to innovative projects and further develop my
-            professional skills.
+            <span className="font-bold underline text-secondary font-secondary">
+              React
+            </span>
+            ,{" "}
+            <span className="font-bold underline text-secondary font-secondary">
+              React Native
+            </span>
+            ,{" "}
+            <span className="font-bold underline text-secondary font-secondary">
+              PHP
+            </span>{" "}
+            and{" "}
+            <span className="font-bold underline text-secondary font-secondary">
+              MySQL
+            </span>
+            . I am eager to contribute to innovative projects and further
+            develop my professional skills.
           </p>
           <TalkButton customStyle={"w-max"} />
         </section>
