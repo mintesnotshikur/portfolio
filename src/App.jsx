@@ -9,10 +9,12 @@ import LinkButton from "../components/linkButton.jsx";
 import TalkButton from "../components/talkButton.jsx";
 import ProjectCard from "../components/projectCard.jsx";
 import ProjectOverview from "../components/projectOverview.jsx";
+import ViewImage from "../components/viewImage.jsx";
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [index, setIndex] = useState(0);
+  const [image, setImage] = useState(null);
 
   const incIndex = (index) => {
     if (index > projectData.length) {
@@ -36,12 +38,25 @@ function App() {
   return (
     <>
       <div className="w-full bg-[#f1f1f1] flex flex-col justify-center items-center pt-8 font-primary">
-        <header className="bg-white p-2.5 flex justify-between items-center text-center w-[90%] lg:w-[80%] border border-gray-500 rounded-xl shadow-lg sticky top-[2%] z-10">
+        {image && (
+          <ViewImage
+            isProfile={true}
+            image={image}
+            onClose={() => setImage(null)}
+          />
+        )}
+        <header className="bg-white p-2.5 flex justify-between items-center text-center w-[90%] lg:w-[80%] border border-gray-500 rounded-xl shadow-lg sticky top-[2%] z-10 animate-header">
           <div className="flex items-center gap-2">
             <img
               src={profilePicture}
+              // src={
+              //   "http://192.168.149.193:8080/file_0000000083885230b041ced01a827d1e_conversation_id=67eb9cc2-82e8-8002-adcb-e6c9c8469733&message_id=6ca90614-146c-46fb-a5d3-d50d2e9c34ff.PNG"
+              // }
               alt="profile picture"
-              className="w-[40px] lg:w-[50px] h-[40px] lg:h-[50px] rounded-xl "
+              className="w-[40px] lg:w-[50px] h-[40px] lg:h-[50px] rounded-xl"
+              onClick={() => {
+                setImage(profilePicture);
+              }}
             />
             <p className="text-[1rem] lg:text-[1.5rem] font-semibold">
               Mintesnot Shikur
@@ -65,15 +80,15 @@ function App() {
             <TalkButton />
           </div>
         </header>
-        <section className="flex flex-col gap-8 w-[90%] lg:w-[80%] pt-[7%]">
-          <p>👋 Hey there, nice to meet you</p>
-          <p className="text-[2rem] lg:text-[4rem] font-extrabold leading-[1]">
+        <section className="flex flex-col gap-8 w-[90%] lg:w-[80%] pt-[7%] ">
+          <p className="animate-fade-in-main">👋 Hey there, nice to meet you</p>
+          <p className="text-[2rem] lg:text-[4rem] font-extrabold leading-[1] animate-fade-in-main">
             I am a{" "}
             <span className="text-secondary font-secondary">website</span> and{" "}
             <span className="text-secondary font-secondary">mobile app</span>{" "}
             developer
           </p>
-          <p className="w-full text-justify lg:w-[70%]">
+          <p className="w-full text-justify lg:w-[70%] animate-fade-in-main">
             I have a Computer Science degree and skills in{" "}
             <span className="font-bold underline text-secondary font-secondary">
               React
@@ -101,9 +116,9 @@ function App() {
         >
           <div className="flex w-full items-center gap-1">
             <h1 className="text-4xl pl-4 font-semibold">My Works</h1>
-            <div className="h-[5px] w-40 bg-black"></div>
+            <div className="h-[4px] w-35 lg:w-40 bg-black"></div>
           </div>
-          <div className="w-full flex overflow-x-auto gap-4 p-4 [scrollbar-width:none] [-ms-overflow-style:none] ">
+          <div className="w-full flex overflow-x-auto gap-4 p-4 [scrollbar-width:none] [-ms-overflow-style:none] animate-fade-in-main">
             {projectData.map((project, index) => (
               <ProjectCard
                 key={index}

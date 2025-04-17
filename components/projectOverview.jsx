@@ -7,7 +7,7 @@ const ProjectOverview = ({ project, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-opacity-50 flex justify-center items-center z-50 backdrop-blur-lg font-secondary"
+      className="fixed inset-0 bg-opacity-50 flex justify-center items-center z-50 backdrop-blur-lg font-secondary animate-fade-in-project"
       onClick={onClose}
     >
       <div

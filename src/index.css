@@ -8,6 +8,7 @@
     --color-secondary: #049f09;
     --font-primary: 'Poppins', sans-serif;
     --font-secondary: 'Josefin Sans', sans-serif;
+
     
     /* --color-light-bg: #f1f1f1;
     --color-light: #fff;
@@ -18,4 +19,37 @@
 * {
     transition: all 0.3s;
     scroll-behavior: smooth;
+}
+
+@keyframes header {
+    0% {
+        opacity: 0;
+        translate: 0 -100px;
+    }
+    100% {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+@keyframes mainFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+  /* Custom Animation Class */
+.animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+.animate-fade-in-main {
+    animation: mainFadeIn 1s ease-in-out;
+}
+.animate-fade-in-project {
+    animation: mainFadeIn .5s ease-in-out;
+}
+.animate-header {
+    animation: header .7s ease-in-out;
 }
