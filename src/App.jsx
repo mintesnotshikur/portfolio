@@ -99,7 +99,7 @@ function App() {
           </div>
           <div
             className={`w-full flex flex-wrap items-center justify-center ${
-              showMore ? "max-h-[1000px]" : "max-h-[270px]"
+              showMore ? "max-h-[100000px]" : "max-h-[270px]"
             } overflow-hidden gap-4 p-4`}
           >
             {projectData.map((project) => (
