@@ -13,27 +13,9 @@ import ViewImage from "../components/viewImage.jsx";
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [index, setIndex] = useState(0);
   const [image, setImage] = useState(null);
 
-  const incIndex = (index) => {
-    if (index > projectData.length) {
-      setIndex(projectData.length);
-    } else if (index < 0) {
-      setIndex(0);
-    } else {
-      setIndex(index + 4);
-    }
-  };
-  const decIndex = (index) => {
-    if (index > projectData.length) {
-      setIndex(projectData.length);
-    } else if (index < 0) {
-      setIndex(0);
-    } else {
-      setIndex(index - 4);
-    }
-  };
+  const [showMore, setShowMore] = useState(false); // State to control visible projects
 
   return (
     <>
@@ -49,11 +31,8 @@ function App() {
           <div className="flex items-center gap-2">
             <img
               src={profilePicture}
-              // src={
-              //   "http://192.168.149.193:8080/file_0000000083885230b041ced01a827d1e_conversation_id=67eb9cc2-82e8-8002-adcb-e6c9c8469733&message_id=6ca90614-146c-46fb-a5d3-d50d2e9c34ff.PNG"
-              // }
               alt="profile picture"
-              className="w-[40px] lg:w-[50px] h-[40px] lg:h-[50px] rounded-xl"
+              className="w-[40px] lg:w-[50px] h-[40px] lg:h-[50px] rounded-lg cursor-pointer"
               onClick={() => {
                 setImage(profilePicture);
               }}
@@ -112,46 +91,31 @@ function App() {
         </section>
         <section
           id="my-works"
-          className="w-full mt-[7%] flex flex-col gap-6 relative"
+          className="w-full mt-[7%] flex flex-col gap-4 relative"
         >
           <div className="flex w-full items-center gap-1">
             <h1 className="text-4xl pl-4 font-semibold">My Works</h1>
             <div className="h-[4px] w-35 lg:w-40 bg-black"></div>
           </div>
-          <div className="w-full flex overflow-x-auto gap-4 p-4 [scrollbar-width:none] [-ms-overflow-style:none] animate-fade-in-main">
-            {projectData.map((project, index) => (
+          <div
+            className={`w-full flex flex-wrap items-center justify-center ${
+              showMore ? "max-h-[1000px]" : "max-h-[270px]"
+            } overflow-hidden gap-4 p-4`}
+          >
+            {projectData.map((project) => (
               <ProjectCard
-                key={index}
+                key={project.id}
                 {...project}
-                onClick={() =>
-                  setSelectedProject({
-                    title: project.title,
-                    image: project.image,
-                    link: project.link,
-                    description: project.description,
-                  })
-                }
+                onClick={() => setSelectedProject(project)}
               />
             ))}
           </div>
-          <a
-            onClick={() => decIndex(index)}
-            href={index <= 0 ? `#1` : `#${index}`}
-            className="absolute hidden lg:flex items-center p-2 left-5 top-[50%] bg-white rounded-full shadow-lg cursor-pointer hover:bg-[#f1f1f1]"
+          <p
+            onClick={() => setShowMore(!showMore)}
+            className="self-center text-secondary underline cursor-pointer"
           >
-            <span className="material-symbols-outlined">arrow_back</span>
-          </a>
-          <a
-            href={
-              index >= projectData.length
-                ? `#${projectData.length}`
-                : `#${index}`
-            }
-            onClick={() => incIndex(index)}
-            className="absolute hidden lg:flex items-center p-2 right-5 top-[50%] bg-white rounded-full shadow-lg cursor-pointer hover:bg-[#f1f1f1]"
-          >
-            <span className="material-symbols-outlined">arrow_forward</span>
-          </a>
+            Show More
+          </p>
         </section>
         <footer className="flex flex-col items-center gap-4 my-[3%]">
           <div className="flex lg:hidden items-center justify-center gap-12">
@@ -168,7 +132,7 @@ function App() {
               icon={githubIcon}
             />
           </div>
-          <p className="footer-text">Made with ❤️ by Mintesnot Shikur</p>
+          <p className="footer-text">Made by Mintesnot Shikur</p>
         </footer>
       </div>
       {/* Render ProjectOverview */}

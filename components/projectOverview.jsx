@@ -35,9 +35,20 @@ const ProjectOverview = ({ project, onClose }) => {
             </a>
           )}
         </div>
-        <p className="text-[1rem] font-normal w-full lg:max-h-[180px] h-[250px] overflow-auto">
+        <p className="text-[1rem] font-normal w-full lg:max-h-[160px] h-[250px] overflow-auto">
           {description}
         </p>
+        <div className="flex flex-wrap gap-2 mt-2">
+          {project?.technologies &&
+            project.technologies.map((tech, index) => (
+              <span
+                key={index}
+                className="bg-secondary/30 text-primary/70 border border-secondary px-2 py-1 rounded-md"
+              >
+                {tech}
+              </span>
+            ))}
+        </div>
       </div>
     </div>
   );
